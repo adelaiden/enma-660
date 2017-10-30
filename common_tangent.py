@@ -23,11 +23,15 @@ def find_common_tangent(x1, y1, x2, y2):
     
     dm = abs(marr1[0] - marr2[0])
     db = abs(barr1[0] - barr2[0])
+
+    var = dm**2 + db**2
     for i in range(len(marr1)): #simultaneously minimize difference
         for j in range(len(marr2)):
-            if dm > abs(marr1[i]-marr2[j]) and db > abs(barr1[i]-barr2[j]):
+            if var > (abs(marr1[i]-marr2[j]))**2 + (abs(barr1[i]-barr2[j]))**2:
                 dm = abs(marr1[i]-marr2[j])
                 db = abs(barr1[i]-barr2[j])
+                var = dm**2 + db**2
+
                 m1 = marr1[i]
                 m2 = marr2[j]
                 b1 = barr1[i]
