@@ -40,7 +40,7 @@ def find_common_tangent(x1, y1, x2, y2):
                 
     mfinal = (v1-v2)/(u1-u2)
     bfinal = v2 - mfinal*u2
-#     print "m1 = ", m1, ", m2 = ", m2, "b1 = ", b1, ", b2 = ", b2 
+#   print "m1 = ", m1, ", m2 = ", m2, "b1 = ", b1, ", b2 = ", b2 
     print "Coordinates of points of tangency are: (%1.4f, %1.4f) and (%1.4f, %1.4f)" % (u1, v1, u2, v2)
     print "A1 = ", mfinal, ", A0 = ", bfinal
     
@@ -140,10 +140,11 @@ if __name__ == "__main__":
 Description: This script will calculate the coefficients of the equation of a common tangent for two curves.
 The program will accept parameters for the equation for free energy, or two sets of data values to generate the curves.
 The matplotlib package is used to provide a visualization of the curves and the common tangent.
+The pandas package is used to convert Excel column data into useable numpy arrays.
 Currently, the script is only able to find the equation of a single common tangent. 
 		""")
 	subparsers = parser.add_subparsers()
-	p_equation = subparsers.add_parser("equation", help="Generate curves by entering parameters for an equation. You will be prompted for parameters.")
+	p_equation = subparsers.add_parser("equation", help="Generate curves by entering parameters for an equation. You will be prompted for a temperature value.")
 	p_datadump = subparsers.add_parser("datadump", help="Generate curves by copying x and y values for two curves. You will be prompted to enter values. You need the pandas python package to run this script.")
 	
 	p_equation.set_defaults(func=equation)
