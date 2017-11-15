@@ -1,0 +1,18 @@
+from pymatgen import MPRester
+from pymatgen.phasediagram.maker import PhaseDiagram
+
+with MPRester() as m:
+	entries = m.get_entries_in_chemsys(['Li', 'O'])
+
+pd = PhaseDiagram(entries)
+
+print [e.name for e in entries]
+
+pd = PhaseDiagram(entries) # constructs the ConvexHull
+pda = PDAnalyzer(pd) # function for analyzing the phase diagram lol
+
+evolution_profile = pda.get_element_profile(Element('Li'), Composition('Li2O')) 
+		# the stability range and evolution profile for a given composition
+print len(evolution_profile)
+for stage in evolution_profile:
+	print stage['reaction'], stage.keys()
